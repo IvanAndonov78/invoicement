@@ -1,0 +1,370 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+} 
+
+#main{
+    margin:0 auto;
+    background-color: #eeeef5f1;
+}
+
+#mynav {
+    background-color: #1b55acf6;
+    border: none;
+    margin-bottom: 4px;
+    border-radius: 0px;
+}
+
+.navbar-brand {
+    color:white!important;
+}
+
+#nav-form {
+    width: 100%;
+    border: none;
+    box-shadow: none!important;
+}
+
+#nav-search {
+    width: 500px;
+    border-radius: 18px;
+    float:left;
+}
+
+#timers-btn {
+    background-color: #1b55acf6;
+    color:white;
+    border: 1.5px white solid;
+    border-radius: 16px;
+    font-size: 16px;
+    padding: 4px 4px 2px 14px;
+    float: right;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+@media screen and (max-width: 804px) {
+    #nav-search {
+        max-width: 300px!important;
+        margin-left: 14px;
+    }
+    #timers-btn {
+        float: left!important;
+    }
+}
+
+#insert-invoice-form {
+    width: 100%;
+    padding-bottom: 60px;
+}
+
+#insert-invoice-form ul {
+    width: 100%;
+}
+
+#insert-invoice-form ul li {
+    list-style-type: none;
+    width: 100%;
+    min-height: 40px;
+    margin-bottom: 10px;
+}
+
+.left-in-li{
+    width: 40%;
+    float: left;
+}
+
+.right-in-li {
+    width: 60%;
+    float: left;
+}
+
+#inner-ul-holder-1 {
+    background-color: #eeeef5f1;
+    padding: 1%;
+}
+
+#inner-ul-holder-2 {
+    background-color: white;
+    padding-top: 2%;
+    padding-left: 2%;
+}
+
+.long-field {
+    width: 94%;
+    height: 34px;
+    border: 1px #afafb3 solid;
+    border-radius: 4px;
+    padding-left: 3px;
+}
+
+#input-group-inv-num {
+    width: 96%!important;
+    height: 35px;  
+    padding: 0px;
+    margin: 0px;
+    border: 0px; 
+}
+
+#input-group-inv-num input {
+    border: 1px #afafb3 solid;
+    border-radius: 4px;
+    margin: 0px;
+}
+
+.custom-select {
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 200px;
+    margin-bottom:0px;
+    height: 34px;
+    border-radius: 4px;
+}
+
+.input-group {
+    width: 40%!important;
+}
+
+#input-group-issuing-date {   
+    height: 34px;
+    border: 1px #afafb3 solid;
+    border-radius: 4px;
+    width: 200px!important;
+}
+
+#issuingDate {
+    border: 0px;
+    margin: 0px;
+    height: 34px;
+    padding-left: 3px;
+}
+
+.common-input {
+    width: 200px;
+    height: 34px;
+    border: 1px #afafb3 solid;
+    border-radius: 4px;
+    padding-left: 3px;
+}
+
+#amount-holder{
+    padding-top: 6px;
+    height: 34px;
+}
+
+#amount-txt {
+    float: left;
+}
+
+#amount-sign {
+    float: right;
+    padding-right: 3px;
+}
+
+.right-in-li table {
+    border-collapse: collapse;
+    border: 0px;
+}
+
+#sbm {
+    background-color: #1b55acf6;
+    color: white;
+}
+
+#clear {
+    background-color: #1b55acf6;
+    color: white;
+}
+
+#dd ul {
+    list-style-type: none;    
+}
+
+#dd ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+#dd ul li a:hover {
+    color: #c7e6eb;
+}
+#dd ul li a:link {
+    color: white;
+}
+#dd ul li a:visited {
+    color: white;
+}
+
+.td-1 {
+    width: 204px;
+}
+.td-2 {
+    width: 20px;
+}
+
+.td-3 {
+    width: 40px;
+}
+
+.td-4 {
+    width: 20px;
+}
+
+.td-2 div {
+    float: left;
+    padding-left:4px;
+}
+
+.td-3 div {
+    float: right;
+    padding-right: 4px;
+}
+
+#table-holder {
+    overflow-x: auto!important;
+    overflow-y: auto!important;
+}
+
+#table-holder table tr td, th {
+    color: #1b55acf6;
+    border: 1px #1b55acf6 solid  !important;
+    padding: 2px 4px 2px 4px;
+}
+
+.floatval {
+    text-align: right !important;
+}
+
+#table-holder table tr:nth-child(even) {
+    background-color: #b0b6ec;
+}
+
+@media screen and (max-width: 804px) {
+
+    #menu {
+        width: 100%;
+    }
+
+    #dd {
+        width: 100%;
+    }
+    #dd ul {
+        width: 100%;
+    }
+    #dd ul li {
+        width: 100%;
+    }
+
+    #insert-invoice-form {
+        padding-bottom: 20px;
+    }
+
+    #insert-invoice-form ul {
+        padding-left: 2%;
+    }
+
+    #insert-invoice-form ul li {
+        width: 100%;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        height:60px;
+    }
+
+    .custom-select {
+        width: 100%;
+    }
+
+    #binder-1 {
+        width: 100%;
+        margin-top: 4px;
+        margin-bottom: 2px;
+        height: 8px!important;
+    }
+    #binder-2 {
+        width: 100%;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        height: 8px!important;
+    }
+
+    .left-in-li {
+        width: 100%!important;
+    }
+    .right-in-li {
+        width: 100%!important;
+    }
+    #amount-sign {
+        float: left;
+        padding-left: 6px;
+    }
+    #inner-ul-holder-1 {
+        height: 138px;
+    }
+    #input-group-issuing-date {
+        width: 96%!important;
+    }
+    
+    .input-group {
+        width: 96%!important;
+    }
+    #input-group-inv-num {
+        width: 100%!important;
+    }
+    .long-field {
+        width: 100%;
+    }
+    #input-group-inv-num {
+        width: 100%;
+    }
+    #invNum {
+        width: 96%;
+    }
+    #client {
+        width: 97%;
+    }
+    #matter {
+        width: 97%;
+    }
+
+    .right-in-li table {
+        border-collapse: collapse;
+        border: 0px;
+        width: 96%
+    }
+
+    .td-1 {
+        width: 72%!important;
+    }
+    .td-2 {
+        width: 18%!important;
+    }
+    .td-3 {
+        width: 10%!important;
+    }
+
+    .right-in-li table tr .common-input {
+        width: 100%!important;
+    }
+
+    #table-holder {
+        /*width: 100%;*/
+        overflow-x: auto!important;
+        overflow-y: auto!important;
+    }
+
+    #table-holder table {
+        width: 100%;
+    }
+
+}
+
+
+
+
+
+
