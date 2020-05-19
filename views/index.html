@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Invoicer </title>
+        <link rel="stylesheet" href="./views/bs-3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./views/css/index.css">
+        <script src="./views/jq/jquery-3.4.1.min.js"></script>
+        <script src="./views/bs-3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse" id="mynav">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#" id="menu">
+                        MENU
+                        <span class="glyphicon glyphicon-menu-hamburger"></span>
+                    </a>
+                    <div id="dd">
+                        <ul>
+                            <li> <a href="#" id="issue-inv"> Invoicement </a> </li>
+                            <li> <a href="#" id="invoices"> Issued docs </a> </li>
+                        </ul>  
+                     </div>                     
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="#" style="background-color:#1b55acf6;">
+                            <span class="glyphicon glyphicon-education"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <form class="navbar-form navbar-left" id="nav-form">
+                            <div class="form-group">
+                                <input type="text" 
+                                    class="form-control" 
+                                    placeholder="Search for matters, documents, tasks, events..." 
+                                    id="nav-search">
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+                <button type="submit" class="btn btn-default" id="timers-btn">
+                    TIMERS
+                    <span class="glyphicon glyphicon-time" style="font-size:16px;"></span>
+                </button>
+            </div>
+        </nav>
+        
+        <div id="main">
+
+                <form id="insert-invoice-form">
+                    <ul>
+                        <div id="inner-ul-holder-1">
+                            <li>
+                                <div class="left-in-li"> Client* </div>
+                                <div class="right-in-li">
+                                    <input list="clients" 
+                                        class="long-field" 
+                                        name="client" 
+                                        id="client" 
+                                        required                                         
+                                        oninput="uiBindingsModule.bindClientInput()"
+                                        >
+                                    <datalist id="clients">
+
+                                    </datalist>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="left-in-li"> Matter </div>
+                                <div class="right-in-li">
+                                    <input name="matter" 
+                                        class="long-field" 
+                                        id="matter" 
+                                        required
+                                        oninput="uiBindingsModule.bindMatterInput()">
+                                </div>
+                            </li>
+                        </div>
+                        <div id="inner-ul-holder-2">
+                            <li id="binder-1">
+                                <div class="left-in-li"> Client name: </div>
+                                <div class="right-in-li">
+                                    <strong id="client-binder"></strong>
+                                </div>
+                            </li>
+                            <li id="binder-2">
+                                <div class="left-in-li"> Matter name: </div>
+                                <div class="right-in-li">
+                                    <strong id="matter-binder"></strong>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="left-in-li"> Issuer: </div>
+                                <div class="right-in-li">
+                                    <div class="input-group">
+                                        <select class="custom-select" id="issuer">
+                                            <option value="-- Choose issuer: --"> -- Choose issuer: -- </option>
+                                            <option value="Ivan Andonov"> Ivan Andonov </option>
+                                            <option value="Atanas Mihnev"> Atanas Mihnev </option>
+                                            <option value="Elvis Metodiev"> Elvis Metodiev </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="left-in-li"> Language: </div>
+                                <div class="right-in-li">
+                                    <div class="input-group">
+                                        <select class="custom-select" id="language">
+                                            <option value="-- Choose language: --"> -- Choose language: -- </option>
+                                            <option value="English"> English </option>
+                                            <option value="Bulgarian"> Bulgarian </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="left-in-li"> Currency: </div>
+                                <div class="right-in-li">
+                                    <div class="input-group">
+                                        <select class="custom-select" 
+                                            id="currency" 
+                                            oninput="uiBindingsModule.bindCurrencyInput()">
+                                            <option value="-- Choose currency: --"> -- Choose currency: -- </option>
+                                            <option value="EUR"> EUR </option>
+                                            <option value="USD"> USD </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="left-in-li"> Invoice No: </div>
+                                <div class="right-in-li">
+                                    <div class="input-group" id="input-group-inv-num">
+                                        <input type="text" class="long-field" id="invNum" required/>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="left-in-li"> Issuing date: </div>
+                                <div class="right-in-li">
+                                    <div class="input-group" id="input-group-issuing-date">                                       
+                                        <input type="date" 
+                                            id="issuingDate" 
+                                            name="issuingDate"
+                                            required
+                                            >
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-th"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="left-in-li" id="amount-holder"> 
+                                    <div id="amount-txt"> Amount: </div>
+                                    <div id="amount-sign"> &euro; </div>
+                                </div>
+                                <div class="right-in-li">
+                                    <table>
+                                        <tr>
+                                            <td class="td-1">
+                                                <input type="text" 
+                                                    class="common-input" 
+                                                    id="amount" 
+                                                    value="0.00" 
+                                                    required
+                                                    oninput="uiBindingsModule.bindAmountInput()">
+                                            </td>
+                                            <td class="td-2"> 
+                                                <div style="width:22px;"></div>
+                                            </td>
+                                            <td class="td-3"> <div> &euro; </div> </td>
+                                            <td class="td-4" id="amount-binder"> 0.00 </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="left-in-li"> 
+                                    <div> 
+                                    </div>
+                                    <div> 
+                                        <input type="checkbox" id="dsc" name="discount" value="discount" checked>
+                                        <label for="dsc"> <span style="font-weight: 200;"> Discount </span> </label>
+                                    </div>
+                                </div>
+                                <div class="right-in-li">
+                                    <table>
+                                        <tr>
+                                            <td class="td-1">
+                                                <input type="text" 
+                                                    class="common-input" 
+                                                    id="discount" 
+                                                    value="0.00" 
+                                                    required 
+                                                    oninput="uiBindingsModule.bindDiscountInput()">       
+                                            </td>
+                                            <td class="td-2">   
+                                                <div> % </div>
+                                            </td>
+                                            <td class="td-3"> 
+                                                <div> &euro; </div> 
+                                            </td>
+                                            <td class="td-4" id="discount-binder"> 0.00 </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="left-in-li"> 
+                                    <div> 
+                                    </div>
+                                    <div> 
+                                        <input type="checkbox" id="vat" name="vat" value="vat" checked>
+                                        <label for="vat"> <span style="font-weight: 200;"> VAT </span> </label>
+                                    </div>
+                                </div>
+                                <div class="right-in-li">
+                                    <table>
+                                        <tr>
+                                            <td class="td-1">
+                                                <input type="text" 
+                                                    class="common-input" 
+                                                    id="vatRate" 
+                                                    value="20"
+                                                    disabled
+                                                    >
+                                            </td>
+                                            <td class="td-2">
+                                                <div> % </div>
+                                            </td>
+                                            <td class="td-3"> <div> &euro; </div> </td>
+                                            <td class="td-4" id="vat-binder"> 0.00 </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </li>
+                            <div class="input-group" style="width:100%;">                               
+                                <button type="submit" class="btn btn-default" id="sbm"> 
+                                    CREATE INVOICE  
+                                </button> 
+                                &nbsp;
+                                <button type="reset" class="btn btn-default" id="clear"> 
+                                    CLEAR
+                                </button>
+                            </div>
+                        </div>
+                    </ul>
+                    
+                </form>
+
+                <div class="container" id="table-holder"></div>
+
+                <div id="infoModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                &times;
+                            </button>
+                            <h4 class="modal-title"> Messenger: </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div id="infoMsg"> </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" 
+                                class="btn btn-default" 
+                                data-dismiss="modal" 
+                                id="closeInfoModalBtn"
+                                >
+                                Close
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VVVVVVVVVVVVV   INVOICE VIEW   VVVVVVVVVVVVV  -->
+                
+                <div class="container" id="invoice-blank">
+                    <table>
+
+                        <tr id="row1">
+                            <td colspan="6" id="td-invoice" style="width:100%;text-align:center;"> 
+                                <h3> INVOICE </h3> 
+                            </td>
+                        </tr>
+
+                        <tr id="row2">
+                            <td width="65" height="48"> 
+                                <b> Client: </b> 
+                            </td>
+                            <td width="135"> 
+                                <span class="inv-elem"></span> 
+                            </td>
+                            <td class="td-empty" width="200"></td>
+                            <td class="td-empty" width="200"></td>
+
+                            <td width="100" style="text-align:left;"> Invoice no. </td> 
+                            <td width="100" style="text-align:right;"> <span class="inv-elem"> </span> </td>
+                        </tr>
+
+                        <tr id="row3">
+                            <td width="65" height="48"> 
+                                Matter: 
+                            </td>
+                            <td width="135"> 
+                                <span class="inv-elem"></span> 
+                            </td>
+                            <td class="td-empty" width="200"></td>
+                            <td class="td-empty" width="200"></td>
+
+                            <td width="100" style="text-align:left;"> Date: </td> 
+                            <td width="100" style="text-align:right;"> <span class="inv-elem"> </span> </td>
+                        </tr>
+
+                        <tr id="row4">
+                            <td width="200" height="48" colspan="2" style="border:1px black solid!important;text-align:left;"> 
+                                <span class="inv-elem"></span>
+                            </td>
+                            <td width="200" style="border:1px black solid!important;text-align:left;"> 
+                                1 
+                            </td>
+                            <td width="200" style="border:1px black solid!important;text-align:right;"> 
+                                <span class="inv-elem"></span> 
+                                <span class="inv-elem"></span> 
+                            </td>
+
+                            <td width="200" colspan="2" style="border:1px black solid!important;text-align:right;"> 
+                                <span class="inv-elem"></span> 
+                                <span class="inv-elem"></span>  
+                            </td> 
+                        </tr>
+
+                        <tr id="row5">
+                            <td width="800" height="48" colspan="6" style="width:100%;text-align:right;"> 
+                                <span class="inv-elem"></span>
+                            </td>
+                        </tr>
+
+                        <tr id="row6">
+                            <td width="800" height="48" colspan="6" style="width:100%;text-align:right;"> 
+                                <span class="inv-elem"></span>
+                            </td>
+                        </tr>
+
+                        <tr id="row7">
+                            <td width="800" height="48" colspan="6" style="width:100%;text-align:left;"> 
+                                Kind regards,
+                            </td>
+                        </tr>
+
+                        <tr id="row8">
+                            <td width="800" height="48" colspan="6" style="width:100%;text-align:left;"> 
+                                <span class="inv-elem"></span>
+                            </td>
+                        </tr>
+                        
+                    </table>
+                </div>
+
+        </div>
+
+        <script src="./views/js/app.js"></script>
+    </body>
+</html>
+
+
